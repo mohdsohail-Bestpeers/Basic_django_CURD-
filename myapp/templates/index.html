@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+</head>
+<body> 
+
+    <div>
+        <form method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type='submit', value="save">
+        </form>
+    </div>
+    <br><br>
+    <div>
+           
+       <table>
+            <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Blog</th>
+            </tr> {% for objs in obj %}
+           
+            <tr>
+              
+                <td>{{objs.title}}</td>
+                <td>{{objs.blog}}</td>
+                <td><a class="edit-btn" href="{% url 'update' objs.id %}" >edit</a></td><br>
+                <td><a class="edit-btn" href="{% url 'delete' objs.id %}" >delete</a></td><br>
+                
+                
+            </tr>
+        </table>
+        
+            {% endfor %}
+            
+    </div>
+</body>
+</html>
