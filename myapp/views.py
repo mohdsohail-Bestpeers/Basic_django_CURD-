@@ -11,7 +11,9 @@ def BlogView(request):
     form = BlogForm()
     if request.method == 'POST':
         form = BlogForm(request.POST)
+        print("hello")
         form.save()
+        form = BlogForm()
     return render(request,'index.html', {'obj':obj,'form':form})
 
 

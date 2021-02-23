@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    
-    <title>Document</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
 </head>
-<body> 
+<body>
 
     <div>
         <form method='POST'>
@@ -15,27 +30,29 @@
     </div>
     <br><br>
     <div>
-           
-       <table>
-            <tr>
-                <th>Name</th>
-                <th>Title</th>
-                <th>Blog</th>
-            </tr> {% for objs in obj %}
-           
-            <tr>
-              
-                <td>{{objs.title}}</td>
-                <td>{{objs.blog}}</td>
-                <td><a class="edit-btn" href="{% url 'update' objs.id %}" >edit</a></td><br>
-                <td><a class="edit-btn" href="{% url 'delete' objs.id %}" >delete</a></td><br>
-                
-                
-            </tr>
-        </table>
-        
-            {% endfor %}
-            
-    </div>
+
+<h2>Data Table</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Tittle</th>
+    <th>Blog</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  
+  <tr>
+    {% for objs in obj %}
+    <td>{{objs.name}}</td>
+    <td>{{objs.title}}</td>
+    <td>{{objs.blog}}</td>
+    <td><a class="edit-btn" href="{% url 'update' objs.id %}" >edit</a></td>
+    <td><a class="edit-btn" href="{% url 'delete' objs.id %}" >delete</a></td>
+  </tr>
+  {% endfor %}
+  
+</table>
+
 </body>
 </html>
